@@ -13,7 +13,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NoticeBox.newBox(MainActivity.this).setCancelable(true).setCanceledOnTouch(true).create().show();
+//                NoticeBox.newBox(MainActivity.this).setCancelable(true).setCanceledOnTouch(true).create().show();
+                NoticeBox.newBox(MainActivity.this).setCancelable(true).setCanceledOnTouch(true).create().postDelayShow(1000);
             }
         });
     }

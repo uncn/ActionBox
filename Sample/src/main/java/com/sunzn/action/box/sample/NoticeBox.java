@@ -2,6 +2,7 @@ package com.sunzn.action.box.sample;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.Toast;
 
 import com.sunzn.action.box.library.ActionBox;
 
@@ -28,16 +29,25 @@ public class NoticeBox extends ActionBox {
         findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismiss();
+                fade();
                 MessageBox.newBox(getContext()).setCancelable(true).setCanceledOnTouch(true).create().show();
             }
         });
         findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismiss();
+                fade();
             }
         });
     }
 
+    @Override
+    public void onShow() {
+        Toast.makeText(getContext(),"onShow",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onFade() {
+        Toast.makeText(getContext(),"onFade",Toast.LENGTH_SHORT).show();
+    }
 }

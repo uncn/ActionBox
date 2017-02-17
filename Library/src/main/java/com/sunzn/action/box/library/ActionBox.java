@@ -45,12 +45,48 @@ public abstract class ActionBox {
         return this;
     }
 
-    public void show() {
-        if (mActionBox != null && !mActionBox.isShowing()) mActionBox.show();
+    public void onShow() {
+        // TODO
     }
 
-    public void dismiss() {
-        if (mActionBox != null && mActionBox.isShowing()) mActionBox.dismiss();
+    public void onFade() {
+        // TODO
+    }
+
+    public void show() {
+        if (mActionBox != null && !mActionBox.isShowing()) {
+            mActionBox.show();
+            onShow();
+        }
+    }
+
+    public void fade() {
+        if (mActionBox != null && mActionBox.isShowing()) {
+            mActionBox.dismiss();
+            onFade();
+        }
+    }
+
+    public void postDelayShow(long millis) {
+        if (mActionBox != null && !mActionBox.isShowing() && mRootView != null) {
+            mRootView.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    show();
+                }
+            }, millis);
+        }
+    }
+
+    public void postDelayFade(long millis) {
+        if (mActionBox != null && mActionBox.isShowing() && mRootView != null) {
+            mRootView.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    fade();
+                }
+            }, millis);
+        }
     }
 
     public abstract void onActionBoxCreated();

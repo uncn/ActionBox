@@ -24,7 +24,7 @@ public class MessageBox extends ActionBox {
         findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismiss();
+                fade();
                 NoticeBox.newBox(getContext()).setCancelable(true).setCanceledOnTouch(true).create().show();
 
             }
@@ -32,7 +32,7 @@ public class MessageBox extends ActionBox {
         findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismiss();
+                fade();
             }
         });
     }
