@@ -1,0 +1,20 @@
+<resources>
+
+
+    <style name="Theme.ActionBox" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/Animation.ActionBox</item>
+    </style>
+
+    <style name="Animation.ActionBox" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/action_box_enter</item>
+        <item name="android:windowExitAnimation">@anim/action_box_exit</item>
+    </style>
+
+</resources>
