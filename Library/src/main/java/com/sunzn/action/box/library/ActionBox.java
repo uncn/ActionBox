@@ -12,7 +12,7 @@ import android.view.WindowManager;
  * Created by sunzn on 2017/2/16.
  */
 
-public abstract class ActionBox {
+public abstract class ActionBox<T> {
 
     private int mResource;
     private View mRootView;
@@ -53,6 +53,14 @@ public abstract class ActionBox {
         // TODO
     }
 
+    public void onShow(T t) {
+        // TODO
+    }
+
+    public void onFade(T t) {
+        // TODO
+    }
+
     public void show() {
         if (mActionBox != null && !mActionBox.isShowing()) {
             mActionBox.show();
@@ -64,6 +72,20 @@ public abstract class ActionBox {
         if (mActionBox != null && mActionBox.isShowing()) {
             mActionBox.dismiss();
             onFade();
+        }
+    }
+
+    public void show(T t) {
+        if (mActionBox != null && !mActionBox.isShowing()) {
+            mActionBox.show();
+            onShow(t);
+        }
+    }
+
+    public void fade(T t) {
+        if (mActionBox != null && mActionBox.isShowing()) {
+            mActionBox.dismiss();
+            onFade(t);
         }
     }
 
@@ -84,6 +106,28 @@ public abstract class ActionBox {
                 @Override
                 public void run() {
                     fade();
+                }
+            }, millis);
+        }
+    }
+
+    public void postDelayShow(long millis, final T t) {
+        if (mActionBox != null && !mActionBox.isShowing() && mRootView != null) {
+            mRootView.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    show(t);
+                }
+            }, millis);
+        }
+    }
+
+    public void postDelayFade(long millis, final T t) {
+        if (mActionBox != null && mActionBox.isShowing() && mRootView != null) {
+            mRootView.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    fade(t);
                 }
             }, millis);
         }
