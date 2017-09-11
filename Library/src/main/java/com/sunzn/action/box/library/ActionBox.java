@@ -12,7 +12,7 @@ import android.view.WindowManager;
  * Created by sunzn on 2017/2/16.
  */
 
-public abstract class ActionBox<T> {
+public abstract class ActionBox {
 
     private int mResource;
     private View mRootView;
@@ -53,11 +53,11 @@ public abstract class ActionBox<T> {
         // TODO
     }
 
-    public void onShow(T t) {
+    public <T> void onShow(T t) {
         // TODO
     }
 
-    public void onFade(T t) {
+    public <T> void onFade(T t) {
         // TODO
     }
 
@@ -75,14 +75,14 @@ public abstract class ActionBox<T> {
         }
     }
 
-    public void show(T t) {
+    public <T> void show(T t) {
         if (mActionBox != null && !mActionBox.isShowing()) {
             mActionBox.show();
             onShow(t);
         }
     }
 
-    public void fade(T t) {
+    public <T> void fade(T t) {
         if (mActionBox != null && mActionBox.isShowing()) {
             mActionBox.dismiss();
             onFade(t);
@@ -111,7 +111,7 @@ public abstract class ActionBox<T> {
         }
     }
 
-    public void postDelayShow(long millis, final T t) {
+    public <T> void postDelayShow(long millis, final T t) {
         if (mActionBox != null && !mActionBox.isShowing() && mRootView != null) {
             mRootView.postDelayed(new Runnable() {
                 @Override
@@ -122,7 +122,7 @@ public abstract class ActionBox<T> {
         }
     }
 
-    public void postDelayFade(long millis, final T t) {
+    public <T> void postDelayFade(long millis, final T t) {
         if (mActionBox != null && mActionBox.isShowing() && mRootView != null) {
             mRootView.postDelayed(new Runnable() {
                 @Override
