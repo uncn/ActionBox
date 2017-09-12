@@ -1,6 +1,6 @@
 # ActionBox
 
-[![](https://jitpack.io/v/ShortStickBoy/Banner.svg)](https://jitpack.io/#ShortStickBoy/Banner)
+[![](https://jitpack.io/v/ShortStickBoy/ActionBox.svg)](https://jitpack.io/#ShortStickBoy/ActionBox)
 [![](https://img.shields.io/badge/License-Apache%202.0-orange.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 <!-- [![](https://img.shields.io/badge/Blog-sunzn-blue.svg)](http://www.sunzn.com/) -->
 
