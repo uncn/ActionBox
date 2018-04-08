@@ -2,6 +2,7 @@ package com.sunzn.action.box.library;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,7 @@ import android.view.WindowManager;
  * Created by sunzn on 2017/2/16.
  */
 
-public abstract class ActionBox {
+public abstract class ActionBox implements DialogInterface.OnDismissListener {
 
     private int mResource;
     private View mRootView;
@@ -31,6 +32,7 @@ public abstract class ActionBox {
         mActionBox = new Dialog(mContext, R.style.Theme_ActionBox);
         mActionBox.setCanceledOnTouchOutside(getCanceledOnTouch());
         mActionBox.setCancelable(getCancelable());
+        mActionBox.setOnDismissListener(this);
         mActionBox.setContentView(mRootView);
         Window window = mActionBox.getWindow();
         if (window != null) {
@@ -157,8 +159,17 @@ public abstract class ActionBox {
         return mActionBox.getContext();
     }
 
+    public Dialog getActionBox() {
+        return mActionBox;
+    }
+
     protected View findViewById(int id) {
         return mRootView == null ? null : mRootView.findViewById(id);
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        // TODO
     }
 
 }
