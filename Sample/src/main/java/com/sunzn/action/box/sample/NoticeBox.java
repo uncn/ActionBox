@@ -1,6 +1,8 @@
 package com.sunzn.action.box.sample;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -11,6 +13,23 @@ import com.sunzn.action.box.library.ActionBox;
  */
 
 public class NoticeBox extends ActionBox {
+
+    private AudioListener mAudioListener;
+
+    public interface AudioListener {
+
+        void finish();
+
+        void cancel();
+
+        void dismiss();
+
+    }
+
+    public NoticeBox setAudioListener(AudioListener listener) {
+        mAudioListener = listener;
+        return this;
+    }
 
     public static NoticeBox newBox(Context context) {
         return new NoticeBox(context, R.layout.notice_box);
@@ -37,17 +56,37 @@ public class NoticeBox extends ActionBox {
             @Override
             public void onClick(View v) {
                 fade();
+                fade("a");
             }
         });
     }
 
+
+    @Override
+    public <T> void onShow(T t) {
+        super.onShow(t);
+    }
+
+    @Override
+    public <T> void onFade(T t) {
+        super.onFade(t);
+        Log.e("sunzn", (String) t);
+    }
+
     @Override
     public void onShow() {
-        Toast.makeText(getContext(),"onShow",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "onShow", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onFade() {
-        Toast.makeText(getContext(),"onFade",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "onFade", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+        if (mAudioListener != null) mAudioListener.cancel();
+    }
+
 }

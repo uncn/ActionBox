@@ -1,6 +1,7 @@
 package com.sunzn.action.box.sample;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.View;
 
 import com.sunzn.action.box.library.ActionBox;
@@ -32,7 +33,7 @@ public class MessageBox extends ActionBox {
         findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fade();
+                postDelayFade(800,"ss");
             }
         });
     }
