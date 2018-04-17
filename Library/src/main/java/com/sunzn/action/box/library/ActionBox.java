@@ -19,6 +19,7 @@ public abstract class ActionBox implements DialogInterface.OnDismissListener {
     private View mRootView;
     private Context mContext;
     private Dialog mActionBox;
+    private float mDimAmount = 0.5F;
     private boolean mCancelable = true;
     private boolean mCanceledOnTouch = true;
 
@@ -37,6 +38,7 @@ public abstract class ActionBox implements DialogInterface.OnDismissListener {
         Window window = mActionBox.getWindow();
         if (window != null) {
             window.setGravity(Gravity.BOTTOM);
+            window.setDimAmount(getDimAmount());
             WindowManager.LayoutParams params = window.getAttributes();
             params.x = 0;
             params.y = 0;
@@ -137,12 +139,21 @@ public abstract class ActionBox implements DialogInterface.OnDismissListener {
 
     public abstract void onActionBoxCreated();
 
+    private float getDimAmount() {
+        return this.mDimAmount;
+    }
+
     private boolean getCancelable() {
         return this.mCancelable;
     }
 
     private boolean getCanceledOnTouch() {
         return this.mCanceledOnTouch;
+    }
+
+    public ActionBox setDimAmount(float amount) {
+        this.mDimAmount = amount;
+        return this;
     }
 
     public ActionBox setCancelable(boolean cancel) {
