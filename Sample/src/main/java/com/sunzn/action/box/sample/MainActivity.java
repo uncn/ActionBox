@@ -1,6 +1,5 @@
 package com.sunzn.action.box.sample;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
 
-                }).setCancelable(true).setCanceledOnTouch(true).create().postDelayShow(1000);
+                }).setCancelable(true).setCanceledOnTouch(true).setDimAmount(0).create().postDelayShow(1000);
             }
         });
     }
