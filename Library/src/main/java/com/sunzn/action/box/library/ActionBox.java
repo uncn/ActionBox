@@ -174,8 +174,9 @@ public abstract class ActionBox implements DialogInterface.OnDismissListener {
         return mActionBox;
     }
 
-    protected View findViewById(int id) {
-        return mRootView == null ? null : mRootView.findViewById(id);
+    protected <V extends View> V findViewById(int id) {
+        V view = mRootView.findViewById(id);
+        return mRootView == null ? null : view;
     }
 
     @Override
